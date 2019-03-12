@@ -79,4 +79,5 @@ collections:
         }
       - { label: "Path", name: "path", widget: "hidden", default: "/home" }
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Strapline", name: "strapline", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
