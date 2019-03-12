@@ -1,7 +1,7 @@
 ---
 contentType: home
 path: /home
-title: Home Me
+title: Home
 ---
 This is a placeholder page.
 
