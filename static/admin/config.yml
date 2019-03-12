@@ -64,3 +64,19 @@ collections:
       - { label: "Path", name: "path", widget: "hidden", default: "/about" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "home"
+    label: "Home"
+    folder: "src/pages/home"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: "hidden",
+          default: "about",
+        }
+      - { label: "Path", name: "path", widget: "hidden", default: "/home" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
