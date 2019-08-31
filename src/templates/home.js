@@ -1,28 +1,33 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import Scrollable from "../components/scroll/scrollable"
+
+const handleScroll = (event) => {
+  var mainNav = document.getElementById("mainNav");
+  var pageContentRect = document.getElementById("page-content").getBoundingClientRect();
+  if(pageContentRect.top < -120) {
+    mainNav.classList.add("navbar-scrolled");
+  } else {
+    mainNav.classList.remove("navbar-scrolled");
+  }
+}
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data;
   return (
     <Layout>
-      <header class="masthead">
+      <header className="masthead">
+      <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <Container className="container h-100">
-          <Row className="h-100 align-items-center justify-content-center text-center">
-            <Col lg='10' className="align-self-end">
-              <h1 class="text-uppercase text-white font-weight-bold">
-              {data.site.siteMetadata.title} | {post.frontmatter.title}
-              </h1>
-              <hr class="divider my-4" />
-            </Col>
-            <Col lg='8' className="align-self-baseline">
-              <p class="text-white-75 font-weight-light mb-5">
-                Start Bootstrap can help you build better websites using the
-                Bootstrap framework! Just download a theme and start
-                customizing, no strings attached!
+          <Row>
+          <Col lg='8' className="align-self-baseline">
+              <p className="text-white-75 font-weight-light mb-5">
+              {post.frontmatter.strapline}
               </p>
+            </Col>
+            <Col md='4' className="align-self-end">
             </Col>
           </Row>
         </Container>
@@ -32,12 +37,13 @@ export default function Template({ data }) {
 }
 
 export const homePageQuery = graphql`
-  query HomePage($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query HomePage {
+    markdownRemark(frontmatter: { path: { eq:"/" } }) {
       html
       frontmatter {
         path
         title
+        strapline
       }
     }
     site {

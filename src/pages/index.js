@@ -1,46 +1,56 @@
-import React from 'react'
-import { Container, Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
-import Link from 'gatsby-link'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
+import Link from "gatsby-link";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import Scrollable from "../components/scroll/scrollable"
+
+const handleScroll = (event) => {
+    //console.log("Index's handleScroll");
+  }
 
 const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges.filter(post => !post.node.frontmatter.hidden && post.node.frontmatter.contentType === 'blog')
+  const { markdownRemark: post } = data;
   return (
     <Layout>
-      <Container>
-        {posts.map(({ node: post }) => (
-          <Card style={{marginBottom: 10}} key={post.id}>
-            <CardBody>
-              <CardTitle><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></CardTitle>
-              <CardSubtitle style={{marginBottom: 10}}>{post.frontmatter.date}</CardSubtitle>
-              <CardText>{post.excerpt}</CardText>
-            </CardBody>
-          </Card>
-        ))}
-      </Container>
+      <header className="masthead">
+      <Scrollable onWindowScroll={handleScroll}></Scrollable>
+        <Container className="container h-100">
+          <Row className="h-100 align-items-center justify-content-center text-center">
+            <Col lg="10" className="align-self-end">
+              <h1 className="text-uppercase text-white font-weight-bold">
+                {data.site.siteMetadata.title} | {post.frontmatter.title}
+              </h1>
+              <hr className="divider my-4" />
+            </Col>
+            <Col lg="8" className="align-self-baseline">
+              <p className="text-white-75 font-weight-light mb-5">
+                {post.frontmatter.strapline}
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </header>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          frontmatter {
-            title
-            contentType
-            date(formatString: "MMMM DD, YYYY")
-            path
-            hidden
-          }
-        }
+    markdownRemark(frontmatter: { path: { eq: "/" } }) {
+      html
+      frontmatter {
+        path
+        title
+        strapline
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }
-`
+`;

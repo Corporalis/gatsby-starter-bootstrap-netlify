@@ -1,7 +1,8 @@
 ---
 contentType: home
-path: /home
+path: /
 title: Home
+strapline: When life gives you lemons
 ---
 This is a placeholder page.
 
