@@ -11,7 +11,7 @@ const handleScroll = event => {
 
 const IndexPage = ({ data }) => {
   const { markdownRemark } = data;
-  const { frontmatter } = markdownRemark;
+  const { frontmatter, html } = markdownRemark;
   return (
     <Layout>
       <header className="masthead">
@@ -25,6 +25,10 @@ const IndexPage = ({ data }) => {
                 className="float-right"
               />
               <p className="text-white-75">{frontmatter.introduction}</p>
+              <div
+                className="blog-post-content"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
             </Col>
           </Row>
         </Container>
