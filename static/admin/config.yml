@@ -39,4 +39,5 @@ collections:
       - { label: "Path", name: "path", widget: "hidden", default: "/" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Strapline", name: "strapline", widget: "string" }
+      - { label: "Introduction", name: "introduction", widget: "markdown" }
       - { label: "Body", name: "body", widget: "markdown" }
