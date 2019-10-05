@@ -1,10 +1,8 @@
 ---
 contentType: coaching
 path: /
-title: Coaching
+title: What is coaching?
 ---
-# What is coaching?
-
 What exactly is coaching and how do I know it’s going to work for me?
 This type of coaching is different from the ‘stop and give me 20’ style coaching you may have seen in films. It’s in essence; talking, thinking and listening.
 
