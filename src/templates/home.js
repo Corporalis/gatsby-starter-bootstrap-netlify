@@ -31,7 +31,7 @@ export default function Template({ data }) {
                 alt="introduction image"
                 className="float-right"
               />
-              <p className="text-white-75">{frontmatter.introduction}</p>
+              {frontmatter.introduction}
             </Col>
           </Row>
         </Container>
