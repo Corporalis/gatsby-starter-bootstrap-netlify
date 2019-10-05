@@ -51,6 +51,11 @@ const TemplateWrapper = ({ children, data }) => {
               </button>
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
+                <li className="nav-item">
+                    <Link to="/coaching" className="nav-link js-scroll-trigger">
+                      Coaching
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link to="/about" className="nav-link js-scroll-trigger">
                       About

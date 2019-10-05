@@ -44,8 +44,8 @@ export default function Template({ data }) {
 }
 
 export const coachingPageQuery = graphql`
-  query CoachingPage {
-    markdownRemark(frontmatter: { path: { eq: "/" } }) {
+  query CoachingPage($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
         path
