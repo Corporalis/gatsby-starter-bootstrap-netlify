@@ -25,7 +25,6 @@ const IndexPage = ({ data }) => {
                 className="float-right"
               />
               <p className="text-white-75">{frontmatter.introduction}</p>
-              {frontmatter.body}
             </Col>
           </Row>
         </Container>
@@ -43,8 +42,7 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
-        introduction,
-        body
+        introduction
       }
     }
     site {

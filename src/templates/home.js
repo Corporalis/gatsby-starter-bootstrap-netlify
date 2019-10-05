@@ -25,14 +25,13 @@ export default function Template({ data }) {
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <Container className="container h-100">
           <Row>
-            <Col md="8">
+            <Col md="12">
               <img
                 src="https://lorempixel.com/200/400/"
                 alt="introduction image"
                 className="float-right"
               />
               <p className="text-white-75">{frontmatter.introduction}</p>
-              {frontmatter.body}
             </Col>
           </Row>
         </Container>
@@ -49,7 +48,6 @@ export const homePageQuery = graphql`
         path
         title
         introduction
-        body
       }
     }
     site {
