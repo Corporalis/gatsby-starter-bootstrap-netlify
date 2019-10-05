@@ -25,7 +25,7 @@ export default function Template({ data }) {
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <Container className="container h-100">
           <Row>
-            <Col md="8">
+            <Col md="12">
               <img
                 src="https://lorempixel.com/200/400/"
                 alt="introduction image"
