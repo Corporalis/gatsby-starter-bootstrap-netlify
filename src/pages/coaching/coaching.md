@@ -1,6 +1,6 @@
 ---
 contentType: coaching
-path: /
+path: /coaching
 title: Coaching
 ---
 # What is coaching?
