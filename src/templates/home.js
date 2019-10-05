@@ -32,7 +32,6 @@ export default function Template({ data }) {
                 className="float-right"
               />
               <p className="text-white-75">{frontmatter.introduction}</p>
-              {frontmatter.body}
             </Col>
           </Row>
         </Container>
@@ -49,7 +48,6 @@ export const homePageQuery = graphql`
         path
         title
         introduction
-        body
       }
     }
     site {

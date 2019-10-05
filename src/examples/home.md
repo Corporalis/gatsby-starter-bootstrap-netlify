@@ -10,7 +10,6 @@ introduction: #Welcome friends!
               You may be feeling stuck in a rut.
               You want to change some things in your home life, work life or business but just don't know how.
               Working together with a coach can help give you clarity to work out steps towards achieving whatever goals you may have.
-body:
 date: 2017-08-08T17:12:33.962Z
 related:
   - post: /examples/home
