@@ -2,8 +2,6 @@
 contentType: home
 path: /
 title: Home
-strapline: When life gives you lemons
-introduction: hello
 ---
 # Welcome friends!
 

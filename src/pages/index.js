@@ -11,7 +11,7 @@ const handleScroll = event => {
 
 const IndexPage = ({ data }) => {
   const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { html } = markdownRemark;
   return (
     <Layout>
       <header className="masthead">
@@ -24,9 +24,8 @@ const IndexPage = ({ data }) => {
                 alt="introduction image"
                 className="float-right"
               />
-              <p className="text-white-75">{frontmatter.introduction}</p>
               <div
-                className="blog-post-content"
+                className="text-white-75"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             </Col>
@@ -46,7 +45,6 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
-        introduction
       }
     }
     site {
