@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import Helmet from 'react-helmet'
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
@@ -18,9 +19,10 @@ const handleScroll = event => {
 
 export default function Template({ data }) {
   const { markdownRemark } = data;
-  const { html } = markdownRemark;
+  const { frontmatter, html } = markdownRemark;
   return (
     <Layout>
+      <Helmet title={`${data.site.siteMetadata.title} | ${frontmatter.title}`} />
       <header className="masthead">
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <Container className="container h-100">
