@@ -17,13 +17,37 @@ const handleScroll = event => {
 };
 
 export default function Template({ data }) {
-  const { markdownRemark } = data;
-  const { html } = markdownRemark;
+  const { allMarkdownRemark, markdownRemark } = data;
+  const { edges } = allMarkdownRemark;
+  //const { html } = markdownRemark;
+  console.log(edges);
+  const pages = edges.map(edge => edge.node); //.find(node => node.frontmatter.contentType === "home");
+  const { homeHtml: html } = pages.find(node => node.frontmatter.contentType === "home");
+  console.log(pages);
   return (
     <Layout>
       <header className="masthead">
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
-        <Container className="container h-100">
+        <Container className="h-100">
+          <Row className="h-100 align-items-center justify-content-center">
+            <Col lg="10 align-self-end text-center">
+              <h1 className="text-uppercase text-white font-weight-bold">
+                Welcome
+              </h1>
+              <hr className="divider my-4" />
+              <img
+                src="https://lorempixel.com/200/400/"
+                alt="introduction image"
+                className="float-right"
+              />
+              <Col lg="8"
+                className="text-left text-white-75"
+                dangerouslySetInnerHTML={{ __html: homeHtml }}
+              />
+            </Col>
+          </Row>
+        </Container>
+        {/* <Container className="container h-100">
           <Row>
             <Col md="12">
               <img
@@ -37,7 +61,7 @@ export default function Template({ data }) {
               />
             </Col>
           </Row>
-        </Container>
+        </Container> */}
       </header>
     </Layout>
   );
@@ -55,6 +79,22 @@ export const homePageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { hidden: { ne: true } } }
+    ) {
+      edges {
+        node {
+          html
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+            contentType
+          }
+        }
       }
     }
   }
