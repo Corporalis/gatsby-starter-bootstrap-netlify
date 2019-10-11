@@ -1,18 +1,26 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import Img from "gatsby-image";
 import Link from "gatsby-link";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
 
 const handleScroll = event => {
-  //console.log("Index's handleScroll");
+  var mainNav = document.getElementById("mainNav");
+  var pageContentRect = document
+    .getElementById("page-content")
+    .getBoundingClientRect();
+  if (pageContentRect.top < -20) {
+    mainNav.classList.add("navbar-scrolled");
+  } else {
+    mainNav.classList.remove("navbar-scrolled");
+  }
 };
 
 const IndexPage = ({ data }) => {
-  const { allMarkdownRemark } = data;
+  const { allMarkdownRemark, headshot57 } = data;
   const { edges } = allMarkdownRemark;
-  console.log(edges);
   const pages = edges.map(edge => edge.node);
   const { html: homeHtml } = pages.find(
     node => node.frontmatter.contentType === "home"
@@ -20,21 +28,11 @@ const IndexPage = ({ data }) => {
   const { html: coachingHtml, frontmatter: coachingFrontmatter } = pages.find(
     node => node.frontmatter.contentType === "coaching"
   );
-  console.log(pages);
+
   return (
     <Layout>
       <header className="masthead">
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
-        <Container className="h-100">
-          <Row className="h-100 align-items-center justify-content-center">
-            <Col lg="12" className="align-self-end text-center">
-              <h1 className="text-uppercase text-white font-weight-bold">
-                Welcome
-              </h1>
-              <hr className="divider my-4" />
-            </Col>
-          </Row>
-        </Container>
       </header>
       <section className="page-section">
         <Container>
@@ -46,10 +44,7 @@ const IndexPage = ({ data }) => {
             />
 
             <Col lg="3">
-              <img
-                src="https://lorempixel.com/200/400/"
-                alt="introduction image"
-              />
+              <Img fluid={headshot57.childImageSharp.fluid} />
             </Col>
           </Row>
         </Container>
@@ -100,6 +95,14 @@ export const pageQuery = graphql`
             title
             contentType
           }
+        }
+      }
+    }
+
+    headshot57: file(relativePath: { eq: "headshot 57a.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

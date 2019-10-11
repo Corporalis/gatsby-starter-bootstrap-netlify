@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "reactstrap";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
@@ -12,7 +13,7 @@ import "prismjs/themes/prism-twilight.css";
 // main site style
 import "./index.scss";
 
-const TemplateWrapper = ({ children, data }) => {
+const TemplateWrapper = ({ children }) => {
   let user;
   if (typeof window !== "undefined") {
     user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
@@ -34,9 +35,8 @@ const TemplateWrapper = ({ children, data }) => {
             id="mainNav"
           >
             <Container>
-              <Link to="/" className="navbar-brand js-scroll-trigger">
-                {data.site.siteMetadata.title}
-              </Link>
+              <Img fixed={data.logo.childImageSharp.fixed} />
+
               <button
                 className="navbar-toggler navbar-toggler-right"
                 type="button"
@@ -51,7 +51,7 @@ const TemplateWrapper = ({ children, data }) => {
               </button>
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                <li className="nav-item">
+                  <li className="nav-item">
                     <Link to="/coaching" className="nav-link js-scroll-trigger">
                       Coaching
                     </Link>
@@ -83,6 +83,13 @@ const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    logo: file(relativePath: { eq: "logo.png" }) {
+      childImageSharp {
+        fixed(width: 100, height: 100) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
   }
