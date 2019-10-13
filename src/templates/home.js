@@ -17,13 +17,12 @@ const handleScroll = event => {
 };
 
 export default function Template({ data }) {
-  const { allMarkdownRemark, markdownRemark } = data;
-  const { edges } = allMarkdownRemark;
-  //const { html } = markdownRemark;
-  console.log(edges);
-  const pages = edges.map(edge => edge.node); //.find(node => node.frontmatter.contentType === "home");
-  const { homeHtml: html } = pages.find(node => node.frontmatter.contentType === "home");
-  console.log(pages);
+  const { markdownRemark } = data;
+  //const { edges } = allMarkdownRemark;
+  const { html } = markdownRemark;
+  //const pages = edges.map(edge => edge.node); //.find(node => node.frontmatter.contentType === "home");
+  //const { homeHtml: html } = pages.find(node => node.frontmatter.contentType === "home");
+  //console.log(pages);
   return (
     <Layout>
       <header className="masthead">
@@ -32,7 +31,7 @@ export default function Template({ data }) {
           <Row className="h-100 align-items-center justify-content-center">
             <Col lg="10 align-self-end text-center">
               <h1 className="text-uppercase text-white font-weight-bold">
-                Welcome
+                Welcome Home
               </h1>
               <hr className="divider my-4" />
               <img
@@ -42,7 +41,7 @@ export default function Template({ data }) {
               />
               <Col lg="8"
                 className="text-left text-white-75"
-                dangerouslySetInnerHTML={{ __html: homeHtml }}
+                dangerouslySetInnerHTML={{ __html: html }}
               />
             </Col>
           </Row>
@@ -79,22 +78,6 @@ export const homePageQuery = graphql`
     site {
       siteMetadata {
         title
-      }
-    }
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { hidden: { ne: true } } }
-    ) {
-      edges {
-        node {
-          html
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            path
-            title
-            contentType
-          }
-        }
       }
     }
   }
