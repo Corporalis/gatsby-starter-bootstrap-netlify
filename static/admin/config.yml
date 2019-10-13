@@ -55,3 +55,23 @@ collections:
       - { label: "Path", name: "path", widget: "hidden", default: "/coaching" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+ - name: "offerings"
+    label: "Offerings"
+    folder: "src/pages/offerings"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: "hidden",
+          default: "offerings",
+        }
+      - { label: "Path", name: "path", widget: "hidden", default: "/offerings" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "PersonalTitle", name: "title", widget: "string" }
+      - { label: "PersonalBody", name: "body", widget: "markdown" }
+      - { label: "GroupTitle", name: "title", widget: "string" }
+      - { label: "GroupBody", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown" }
