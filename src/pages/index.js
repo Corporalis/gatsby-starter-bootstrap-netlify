@@ -19,7 +19,7 @@ const handleScroll = event => {
 };
 
 const IndexPage = ({ data }) => {
-  const { allMarkdownRemark, headshot57 } = data;
+  const { allMarkdownRemark, headshot57, headshot173 } = data;
   const { edges } = allMarkdownRemark;
   const pages = edges.map(edge => edge.node);
   const { html: homeHtml } = pages.find(
@@ -49,14 +49,11 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
-      <section className="page-section">
+      <section id="coaching" className="page-section">
         <Container>
           <Row>
             <Col lg="3">
-              <img
-                src="https://lorempixel.com/200/400/"
-                alt="introduction image"
-              />
+              <Img fluid={headshot173.childImageSharp.fluid} />
             </Col>
             <Col lg="9">
               <h2 className="text-center mt-0">{coachingFrontmatter.title}</h2>
@@ -100,6 +97,14 @@ export const pageQuery = graphql`
     }
 
     headshot57: file(relativePath: { eq: "headshot 57a.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    headshot173: file(relativePath: { eq: "headshot 173a.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid
