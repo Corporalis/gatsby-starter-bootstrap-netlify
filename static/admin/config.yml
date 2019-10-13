@@ -70,8 +70,8 @@ collections:
         }
       - { label: "Path", name: "path", widget: "hidden", default: "/offerings" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "PersonalTitle", name: "title", widget: "string" }
-      - { label: "PersonalBody", name: "body", widget: "markdown" }
-      - { label: "GroupTitle", name: "title", widget: "string" }
-      - { label: "GroupBody", name: "body", widget: "markdown" }
+      - { label: "PersonalTitle", name: "personalTitle", widget: "string" }
+      - { label: "PersonalBody", name: "personalBody", widget: "markdown" }
+      - { label: "GroupTitle", name: "groupTitle", widget: "string" }
+      - { label: "GroupBody", name: "groupBody", widget: "markdown" }
       - { label: "Body", name: "body", widget: "markdown" }
