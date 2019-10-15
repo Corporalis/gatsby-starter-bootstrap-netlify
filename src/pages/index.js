@@ -28,6 +28,9 @@ const IndexPage = ({ data }) => {
   const { html: coachingHtml, frontmatter: coachingFrontmatter } = pages.find(
     node => node.frontmatter.contentType === "coaching"
   );
+  const { frontmatter: offeringsFrontmatter } = pages.find(
+    node => node.frontmatter.contentType === "offerings"
+  );
 
   return (
     <Layout>

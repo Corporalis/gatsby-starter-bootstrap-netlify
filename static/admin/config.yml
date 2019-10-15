@@ -71,7 +71,7 @@ collections:
       - { label: "Path", name: "path", widget: "hidden", default: "/offerings" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "PersonalTitle", name: "personalTitle", widget: "string" }
-      - { label: "PersonalBody", name: "personalBody", widget: "markdown" }
+      - { label: "PersonalBody", name: "personalBody", widget: "markdown", required: false }
       - { label: "GroupTitle", name: "groupTitle", widget: "string" }
       - { label: "GroupBody", name: "groupBody", widget: "markdown" }
       - { label: "Body", name: "body", widget: "markdown" }
