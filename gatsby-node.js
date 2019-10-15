@@ -3,7 +3,7 @@ const path = require('path')
 exports.createPages = ({ actions: { createPage }, graphql }) => {
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: {parent: {internal: {type: {ne: "FrontmatterMarkdownFile"}}}, frontmatter: {hidden: {ne: true}}}) {
         edges {
           node {
             frontmatter {

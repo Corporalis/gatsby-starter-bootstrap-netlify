@@ -26,6 +26,16 @@ module.exports = {
         plugins: ["gatsby-remark-prismjs", "gatsby-remark-copy-linked-files"]
       }
     },
+    {
+      resolve: 'gatsby-transformer-remark-frontmatter',
+      // default: { blacklist: [] }
+      options: {
+        // frontmatter fields to exclude, including all others
+        blacklist: ['templateKey']
+        // frontmatter fields to include, excluding all others
+        // whitelist: ['markdownField']
+      }
+    },
     "gatsby-plugin-offline",
     "gatsby-plugin-react-helmet",
     {

@@ -28,9 +28,10 @@ const IndexPage = ({ data }) => {
   const { html: coachingHtml, frontmatter: coachingFrontmatter } = pages.find(
     node => node.frontmatter.contentType === "coaching"
   );
-  const { frontmatter: offeringsFrontmatter } = pages.find(
-    node => node.frontmatter.contentType === "offerings"
-  );
+  const {
+    frontmatter: offeringsFrontmatter,
+    fields: offeringsFields
+  } = pages.find(node => node.frontmatter.contentType === "offerings");
 
   return (
     <Layout>
@@ -69,6 +70,27 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
+      <section id="offerings" className="page-section">
+        <Container>
+          <Row>
+            <Col lg="3">
+              <Img fluid={headshot173.childImageSharp.fluid} />
+            </Col>
+            <Col lg="9">
+              <h2 className="text-center mt-0">
+                {offeringsFrontmatter.groupTitle}
+              </h2>
+              <hr className="divider my-4"></hr>
+              <div
+                className="text-left"
+                dangerouslySetInnerHTML={{
+                  __html: offeringsFields.frontmattermd.groupBody.html
+                }}
+              ></div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </Layout>
   );
 };
@@ -84,7 +106,9 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { hidden: { ne: true } } }
+      filter: {
+        frontmatter: { hidden: { ne: true }, contentType: { ne: null } }
+      }
     ) {
       edges {
         node {
@@ -94,6 +118,15 @@ export const pageQuery = graphql`
             path
             title
             contentType
+            personalTitle
+            groupTitle
+          }
+          fields {
+            frontmattermd {
+              groupBody {
+                html
+              }
+            }
           }
         }
       }
