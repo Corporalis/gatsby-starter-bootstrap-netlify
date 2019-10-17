@@ -143,7 +143,6 @@ const IndexPage = ({ data }) => {
               <h3 className="text-center mt-0">
                 {offeringsFrontmatter.groupTitle}
               </h3>
-              <hr className="divider my-4"></hr>
               <div
                 className="text-left"
                 dangerouslySetInnerHTML={{
