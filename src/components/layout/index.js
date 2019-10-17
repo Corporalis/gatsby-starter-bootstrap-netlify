@@ -5,6 +5,11 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faPhone, faClock, faCalendarDay  } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faPhone, faClock, faCalendarDay)
 
 // code syntax-highlighting theme
 // feel free to change it to another one
