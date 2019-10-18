@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Img from "gatsby-image";
-import Link from "gatsby-link";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
@@ -54,7 +53,7 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
-      <section id="coaching" className="page-section">
+      <section className="page-section" name="coaching">
         <Container>
           <Row>
             <Col lg="3">
@@ -71,7 +70,7 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
-      <section id="offerings" className="page-section">
+      <section className="page-section" name="offerings">
         <Container>
           <Row>
             <Col lg="12">

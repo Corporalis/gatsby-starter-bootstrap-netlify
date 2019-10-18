@@ -1,15 +1,19 @@
 import React from "react";
 import { Container } from "reactstrap";
+import { Link } from "react-scroll";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faPhone, faClock, faCalendarDay  } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faPhone,
+  faClock,
+  faCalendarDay
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faPhone, faClock, faCalendarDay)
+library.add(fab, faPhone, faClock, faCalendarDay);
 
 // code syntax-highlighting theme
 // feel free to change it to another one
@@ -57,8 +61,29 @@ const TemplateWrapper = ({ children }) => {
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
-                    <Link to="#coaching" className="nav-link js-scroll-trigger">
+                    <Link
+                      activeClass="active"
+                      to="coaching"
+                      spy={true}
+                      smooth={true}
+                      offset={-132}
+                      duration={500}
+                      className="nav-link"
+                    >
                       Coaching
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      activeClass="active"
+                      to="offerings"
+                      spy={true}
+                      smooth={true}
+                      offset={-132}
+                      duration={500}
+                      className="nav-link"
+                    >
+                      When we meet
                     </Link>
                   </li>
                 </ul>
