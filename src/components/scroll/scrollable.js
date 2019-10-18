@@ -1,26 +1,23 @@
-import React from "react";
+import { useEffect } from "react";
 
-export default class Scrollable extends React.Component {
-  handleScroll = event => {
-    // Call the passed-in prop
-    if (this.props.onWindowScroll) {
-      this.props.onWindowScroll(event);
+const Scrollable = ({ onWindowScroll }) => {
+  const handleScroll = event => {
+    if (onWindowScroll) {
+      onWindowScroll(event);
     }
   };
 
-  render = () => {
-    return null; //this.props.children;
-  };
-
-  componentDidMount = () => {
-    if (this.props.onWindowScroll) {
-      window.addEventListener("scroll", this.handleScroll, false);
+  useEffect(() => {
+    if (onWindowScroll) {
+      window.addEventListener("scroll", handleScroll, false);
     }
-  };
+    return () => {
+      if (onWindowScroll) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  });
 
-  componentWillUnmount = () => {
-    if (this.props.onWindowScroll) {
-      window.removeEventListener("scroll", this.handleScroll);
-    }
-  };
-}
+  return null;
+};
+export default Scrollable;
