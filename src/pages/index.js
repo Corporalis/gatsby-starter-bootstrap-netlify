@@ -5,7 +5,8 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
 import Offering from "../components/offering";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ImagePrimaryContentSection from "../components/sections/imagePrimaryContentSection";
+import TextPrimaryContentSection from "../components/sections/textPrimaryContentSection";
 
 const handleScroll = event => {
   var mainNav = document.getElementById("mainNav");
@@ -33,6 +34,9 @@ const IndexPage = ({ data }) => {
     frontmatter: offeringsFrontmatter,
     fields: offeringsFields
   } = pages.find(node => node.frontmatter.contentType === "offerings");
+  const { html: aboutHtml, frontmatter: aboutFrontmatter } = pages.find(
+    node => node.frontmatter.contentType === "about"
+  );
 
   return (
     <Layout>
@@ -54,23 +58,12 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
-      <section className="page-section" name="coaching">
-        <Container>
-          <Row>
-            <Col lg="3">
-              <Img fluid={headshot173.childImageSharp.fluid} />
-            </Col>
-            <Col lg="9">
-              <h2 className="text-center mt-0">{coachingFrontmatter.title}</h2>
-              <hr className="divider my-4"></hr>
-              <div
-                className="text-left"
-                dangerouslySetInnerHTML={{ __html: coachingHtml }}
-              ></div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      <ImagePrimaryContentSection
+        name="coaching"
+        title={coachingFrontmatter.title}
+        image={headshot173.childImageSharp.fluid}
+        html={coachingHtml}
+      />
       <section className="page-section" name="offerings">
         <Container>
           <Row>
@@ -122,6 +115,12 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
       </section>
+      <TextPrimaryContentSection
+        name="about"
+        title={aboutFrontmatter.title}
+        image={headshot173.childImageSharp.fluid}
+        html={aboutHtml}
+      />
     </Layout>
   );
 };

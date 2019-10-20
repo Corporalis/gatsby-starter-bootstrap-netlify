@@ -86,6 +86,19 @@ const TemplateWrapper = ({ children }) => {
                       When we meet
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link
+                      activeClass="active"
+                      to="about"
+                      spy={true}
+                      smooth={true}
+                      offset={-132}
+                      duration={500}
+                      className="nav-link"
+                    >
+                      About
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </Container>
