@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
+import Offering from "../components/offering";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const handleScroll = event => {
@@ -88,49 +89,18 @@ const IndexPage = ({ data }) => {
             </Col>
           </Row>
           <Row>
-            <Col lg="4" sm="12" className="text-center">
-              <div className="mt-5 mb-5">
-                <FontAwesomeIcon
-                  icon="phone"
-                  size="4x"
-                  className="text-primary mb-4"
-                />
-                <h3 className="h4 mb-2">Contact</h3>
-                <p className="text-muted mb-0">
-                  This can over the phone, Skype or face to face, depending on
-                  what your preference is.
-                </p>
-              </div>
-            </Col>
-            <Col lg="4" sm="12" className="text-center">
-              <div className="mt-5 mb-5">
-                <FontAwesomeIcon
-                  icon="clock"
-                  size="4x"
-                  className="text-primary mb-4"
-                />
-                <h3 className="h4 mb-2">Sessions</h3>
-                <p className="text-muted mb-0">
-                  Sessions are 60 or 90 minutes long with the first exploratory
-                  session usually lasting 90 minutes.
-                </p>
-              </div>
-            </Col>
-            <Col lg="4" sm="12" className="text-center">
-              <div className="mt-5  mb-5">
-                <FontAwesomeIcon
-                  icon="calendar-day"
-                  size="4x"
-                  className="text-primary mb-4"
-                />
-                <h3 className="h4 mb-2">Just want a one off?</h3>
-                <p className="text-muted mb-0">
-                  Like a car service, if you’d like to check in to make sure
-                  everything is set up to run smoothly for the next few months
-                  you can opt for a one off coaching session.
-                </p>
-              </div>
-            </Col>
+            <Offering
+              title="Contact"
+              description="This can over the phone, Skype or face to face, depending on what your preference is."
+            />
+            <Offering
+              title="Sessions"
+              description="Sessions are 60 or 90 minutes long with the first exploratory session usually lasting 90 minutes."
+            />
+            <Offering
+              title="Just want a one off?"
+              description="Like a car service, if you’d like to check in to make sure everything is set up to run smoothly for the next few months you can opt for a one off coaching session."
+            />
           </Row>
         </Container>
         <Container>
