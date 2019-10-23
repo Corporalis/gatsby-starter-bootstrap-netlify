@@ -85,14 +85,17 @@ const IndexPage = ({ data }) => {
             <Offering
               title="Contact"
               description="This can over the phone, Skype or face to face, depending on what your preference is."
+              icon="phone"
             />
             <Offering
               title="Sessions"
               description="Sessions are 60 or 90 minutes long with the first exploratory session usually lasting 90 minutes."
+              icon="clock"
             />
             <Offering
               title="Just want a one off?"
               description="Like a car service, if you’d like to check in to make sure everything is set up to run smoothly for the next few months you can opt for a one off coaching session."
+              icon="calendar-day"
             />
           </Row>
         </Container>
