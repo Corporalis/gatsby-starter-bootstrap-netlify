@@ -1,12 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Scrollable from "../components/scroll/scrollable";
-import Offering from "../components/offering";
 import ImagePrimaryContentSection from "../components/sections/imagePrimaryContentSection";
-import TextPrimaryContentSection from "../components/sections/textPrimaryContentSection";
+import AboutContent from "../components/aboutContent";
+import HomeContent from "../components/homeContent";
+import OfferingsContent from "../components/offeringsContent";
 
 const handleScroll = event => {
   var mainNav = document.getElementById("mainNav");
@@ -43,82 +42,21 @@ const IndexPage = ({ data }) => {
       <header className="masthead">
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
       </header>
-      <section className="page-section">
-        <Container>
-          <Row>
-            <Col
-              lg="9"
-              className="text-left"
-              dangerouslySetInnerHTML={{ __html: homeHtml }}
-            />
-
-            <Col lg="3">
-              <Img fluid={headshot57.childImageSharp.fluid} />
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      <HomeContent html={homeHtml} image={headshot57.childImageSharp.fluid} />
       <ImagePrimaryContentSection
         name="coaching"
         title={coachingFrontmatter.title}
         image={headshot173.childImageSharp.fluid}
         html={coachingHtml}
       />
-      <section className="page-section" name="offerings">
-        <Container>
-          <Row>
-            <Col lg="12">
-              <h2 className="text-center mt-0">{offeringsFrontmatter.title}</h2>
-              <hr className="divider my-4"></hr>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg="12">
-              <div className="float-left">
-                <h3 className="text-center mt-0">
-                  {offeringsFrontmatter.personalTitle}
-                </h3>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Offering
-              title="Contact"
-              description="This can over the phone, Skype or face to face, depending on what your preference is."
-              icon="phone"
-            />
-            <Offering
-              title="Sessions"
-              description="Sessions are 60 or 90 minutes long with the first exploratory session usually lasting 90 minutes."
-              icon="clock"
-            />
-            <Offering
-              title="Just want a one off?"
-              description="Like a car service, if you’d like to check in to make sure everything is set up to run smoothly for the next few months you can opt for a one off coaching session."
-              icon="calendar-day"
-            />
-          </Row>
-        </Container>
-        <Container>
-          <Row>
-            <Col lg="3">
-              <Img fluid={headshot173.childImageSharp.fluid} />
-            </Col>
-            <Col lg="9">
-              <h3 className="text-center mt-0">
-                {offeringsFrontmatter.groupTitle}
-              </h3>
-              <div
-                className="text-left"
-                dangerouslySetInnerHTML={{
-                  __html: offeringsFields.frontmattermd.groupBody.html
-                }}
-              ></div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <TextPrimaryContentSection
+      <OfferingsContent
+        title={offeringsFrontmatter.title}
+        personalTitle={offeringsFrontmatter.personalTitle}
+        groupImage={headshot173.childImageSharp.fluid}
+        groupTitle={offeringsFrontmatter.groupTitle}
+        groupHtml={offeringsFields.frontmattermd.groupBody.html}
+      />
+      <AboutContent
         name="about"
         title={aboutFrontmatter.title}
         image={headshot173.childImageSharp.fluid}
