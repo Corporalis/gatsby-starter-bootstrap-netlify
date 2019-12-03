@@ -20,7 +20,7 @@ const handleScroll = event => {
 };
 
 const IndexPage = ({ data }) => {
-  const { allMarkdownRemark, headshot57, headshot173 } = data;
+  const { allMarkdownRemark, headshot57, headshot173, headshot34, headshot137 } = data;
   const { edges } = allMarkdownRemark;
   const pages = edges.map(edge => edge.node);
   const { html: homeHtml } = pages.find(
@@ -52,14 +52,14 @@ const IndexPage = ({ data }) => {
       <OfferingsContent
         title={offeringsFrontmatter.title}
         personalTitle={offeringsFrontmatter.personalTitle}
-        groupImage={headshot173.childImageSharp.fluid}
+        groupImage={headshot137.childImageSharp.fluid}
         groupTitle={offeringsFrontmatter.groupTitle}
         groupHtml={offeringsFields.frontmattermd.groupBody.html}
       />
       <AboutContent
         name="about"
         title={aboutFrontmatter.title}
-        image={headshot173.childImageSharp.fluid}
+        image={headshot34.childImageSharp.fluid}
         html={aboutHtml}
       />
     </Layout>
@@ -104,6 +104,22 @@ export const pageQuery = graphql`
     }
 
     headshot57: file(relativePath: { eq: "headshot 57a.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    headshot34: file(relativePath: { eq: "headshot 34.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    headshot137: file(relativePath: { eq: "headshot 137.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid

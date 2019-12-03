@@ -2,12 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Img from "gatsby-image";
 
-const ImagePrimaryContentSection = ({ name, title, html, image }) => {
+const TextPrimaryContentSection = ({ name, title, html, image, primaryColumnWidth = 9, secondaryColumnWidth = 3  }) => {
   return (
     <section className="page-section" name={name}>
       <Container>
         <Row>
-          <Col lg="9">
+          <Col lg={primaryColumnWidth}>
             <h2 className="text-center mt-0">{title}</h2>
             <hr className="divider my-4"></hr>
             <div
@@ -15,7 +15,7 @@ const ImagePrimaryContentSection = ({ name, title, html, image }) => {
               dangerouslySetInnerHTML={{ __html: html }}
             ></div>
           </Col>
-          <Col lg="3">
+          <Col lg={secondaryColumnWidth}>
             <Img fluid={image} />
           </Col>
         </Row>
@@ -23,4 +23,4 @@ const ImagePrimaryContentSection = ({ name, title, html, image }) => {
     </section>
   );
 };
-export default ImagePrimaryContentSection;
+export default TextPrimaryContentSection;

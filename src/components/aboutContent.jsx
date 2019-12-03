@@ -8,6 +8,8 @@ const AboutContent = ({ html, title, image }) => {
         title={title}
         image={image}
         html={html}
+        primaryColumnWidth={6}
+        secondaryColumnWidth={6}
       />
   );
 };

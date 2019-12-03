@@ -46,10 +46,10 @@ const OfferingsContent = ({
       </Container>
       <Container>
         <Row>
-          <Col lg="3">
+          <Col lg="6">
             <Img fluid={groupImage} />
           </Col>
-          <Col lg="9">
+          <Col lg="6">
             <h3 className="text-center mt-0">{groupTitle}</h3>
             <div
               className="text-left"
