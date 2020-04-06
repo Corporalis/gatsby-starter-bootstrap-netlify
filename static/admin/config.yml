@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  repo: corporalis/gatsby-starter-bootstrap-netlify
   branch: master
 
 publish_mode: editorial_workflow
