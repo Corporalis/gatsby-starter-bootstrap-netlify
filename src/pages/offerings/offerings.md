@@ -1,7 +1,7 @@
 ---
 contentType: offerings
 path: /offerings
-title: When we meet
+title: Work with me
 personalTitle: One to one coaching
 personalBody: test
 groupTitle: Group sessions
