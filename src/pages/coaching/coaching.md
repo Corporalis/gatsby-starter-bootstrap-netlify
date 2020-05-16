@@ -20,11 +20,8 @@ How would your personal and work life be different if you:
 
 How would you answer the following questions?
 
-* 
-
-What goals/dreams/aspirations have you got that you aren’t working on?
-
-* What’s stopping you from making the changes that would ultimately improve your life?
-* Are these goals truly in your heart or do you think you ‘should’ be working on them?
+* What goals/dreams/aspirations do I have that I'm not working on?
+* What’s stopping me from making the changes that would improve your life?
+* Are these goals truly in my heart or do I believe I ‘should’ be working on them?
 
 All these ideas and more that can be explored through coaching to create that nudge you need to move forwards.
