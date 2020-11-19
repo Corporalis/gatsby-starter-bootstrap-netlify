@@ -10,14 +10,14 @@
     "@fortawesome/react-fontawesome": "^0.1.6",
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
-    "gatsby": "^2.15.29",
+    "gatsby": "^2.27.0",
     "gatsby-image": "^2.2.27",
     "gatsby-link": "^2.2.18",
     "gatsby-plugin-netlify": "^2.1.17",
     "gatsby-plugin-offline": "^2.2.10",
     "gatsby-plugin-react-helmet": "^3.1.10",
     "gatsby-plugin-sass": "^2.1.17",
-    "gatsby-plugin-sharp": "^2.2.29",
+    "gatsby-plugin-sharp": "^2.9.0",
     "gatsby-remark-copy-linked-files": "^2.1.24",
     "gatsby-remark-prismjs": "^3.3.17",
     "gatsby-source-filesystem": "^2.1.29",
@@ -44,7 +44,7 @@
     "test": "gatsby build"
   },
   "devDependencies": {
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "raw-loader": "^0.5.1"
   }
 }
