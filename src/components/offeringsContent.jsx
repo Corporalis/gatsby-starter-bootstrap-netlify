@@ -6,9 +6,10 @@ import Offering from "../components/offering";
 const OfferingsContent = ({
   title,
   personalTitle,
+  personalHtml,
   groupTitle,
   groupImage,
-  groupHtml
+  groupHtml,
 }) => {
   return (
     <section className="page-section" name="offerings">
@@ -21,9 +22,13 @@ const OfferingsContent = ({
         </Row>
         <Row>
           <Col lg="12">
-            <div className="float-left">
-              <h3 className="text-center mt-0">{personalTitle}</h3>
-            </div>
+            <h3 className="text-center mt-0">{personalTitle}</h3>
+            <div
+              className="text-left"
+              dangerouslySetInnerHTML={{
+                __html: personalHtml,
+              }}
+            ></div>
           </Col>
         </Row>
         <Row>
@@ -54,7 +59,7 @@ const OfferingsContent = ({
             <div
               className="text-left"
               dangerouslySetInnerHTML={{
-                __html: groupHtml
+                __html: groupHtml,
               }}
             ></div>
           </Col>
