@@ -1,6 +1,6 @@
 ---
 contentType: home
-path: /
+path: /home
 title: Home
 ---
 > Welcome!

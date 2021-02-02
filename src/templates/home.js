@@ -17,6 +17,7 @@ const handleScroll = event => {
 };
 
 export default function Template({ data }) {
+  console.log(data)
   const { markdownRemark } = data;
   //const { edges } = allMarkdownRemark;
   const { html } = markdownRemark;

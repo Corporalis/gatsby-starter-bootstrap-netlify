@@ -36,7 +36,7 @@ collections:
           widget: "hidden",
           default: "about",
         }
-      - { label: "Path", name: "path", widget: "hidden", default: "/" }
+      - { label: "Path", name: "path", widget: "hidden", default: "/home" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
 
@@ -75,3 +75,44 @@ collections:
       - { label: "GroupTitle", name: "groupTitle", widget: "string" }
       - { label: "GroupBody", name: "groupBody", widget: "markdown" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "testimonial"
+    label: "Testimonial"
+    folder: "src/pages/testimonial"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: "hidden",
+          default: "testimonial",
+        }
+      - { label: "Path", name: "path", widget: "string", default: "title" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Attachment",
+          name: "attachments",
+          required: false,
+          widget: "list",
+          fields: [{ name: "filename", label: "Filename", widget: "file" }],
+        }
+      - {
+          label: "Related Post",
+          name: "related",
+          required: false,
+          widget: "list",
+          fields:
+            [
+              {
+                name: "post",
+                label: "Post",
+                widget: "relation",
+                collection: "testimonial",
+                searchFields: [name, path, title],
+                valueField: path,
+              },
+            ],
+        }
