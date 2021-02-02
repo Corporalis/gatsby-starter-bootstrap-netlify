@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-bootstrap-netlify",
-  "description": "Example Gatsby, Bootstrap, and Netlify CMS project",
+  "name": "addy-sheppard-coaching",
+  "description": "Gatsby, Bootstrap, and Netlify CMS project",
   "version": "1.0.0",
-  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "author": "Sam Sheppard <sam@redskytechnology.co.uk>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
@@ -44,6 +44,7 @@
     "test": "gatsby build"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "node-sass": "^4.14.1",
     "raw-loader": "^4.0.2"
   }
