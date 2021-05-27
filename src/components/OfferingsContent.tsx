@@ -1,7 +1,16 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import Img from "gatsby-image";
-import Offering from "../components/offering";
+import React from 'react'
+import { Container, Row, Col } from 'reactstrap'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import Offering from './offering'
+
+interface OfferingsContentProps {
+  title: string
+  personalTitle: string
+  personalHtml: string
+  groupTitle: string
+  groupImage: any
+  groupHtml: string
+}
 
 const OfferingsContent = ({
   title,
@@ -10,9 +19,9 @@ const OfferingsContent = ({
   groupTitle,
   groupImage,
   groupHtml,
-}) => {
+}: OfferingsContentProps) => {
   return (
-    <section className="page-section" name="offerings">
+    <section className="page-section">
       <Container>
         <Row>
           <Col lg="12">
@@ -52,7 +61,7 @@ const OfferingsContent = ({
       <Container>
         <Row>
           <Col lg="6">
-            <Img fluid={groupImage} />
+            <GatsbyImage image={groupImage} alt="Group session image" />
           </Col>
           <Col lg="6">
             <h3 className="text-center mt-0">{groupTitle}</h3>
@@ -66,7 +75,7 @@ const OfferingsContent = ({
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default OfferingsContent;
+export default OfferingsContent

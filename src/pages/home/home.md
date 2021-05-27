@@ -3,6 +3,7 @@ contentType: home
 path: /
 title: Home
 ---
+
 > Welcome!
 >
 > I’m glad you’ve made the decision to come here.

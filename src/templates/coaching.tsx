@@ -1,30 +1,18 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import React from 'react'
+import { Container, Row, Col } from 'reactstrap'
 import Helmet from 'react-helmet'
-import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import Scrollable from "../components/scroll/scrollable";
+import { graphql } from 'gatsby'
+import Layout from '../components/Layout'
 
-const handleScroll = event => {
-  // var mainNav = document.getElementById("mainNav");
-  // var pageContentRect = document
-  //   .getElementById("page-content")
-  //   .getBoundingClientRect();
-  // if (pageContentRect.top < -120) {
-  //   mainNav.classList.add("navbar-scrolled");
-  // } else {
-  //   mainNav.classList.remove("navbar-scrolled");
-  // }
-};
-
-export default function Template({ data }) {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+export default function Template({ data }: any) {
+  const { markdownRemark } = data
+  const { frontmatter, html } = markdownRemark
   return (
     <Layout>
-      <Helmet title={`${data.site.siteMetadata.title} | ${frontmatter.title}`} />
+      <Helmet
+        title={`${data.site.siteMetadata.title} | ${frontmatter.title}`}
+      />
       <header className="masthead">
-        <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <Container className="container h-100">
           <Row>
             <Col md="12">
@@ -42,7 +30,7 @@ export default function Template({ data }) {
         </Container>
       </header>
     </Layout>
-  );
+  )
 }
 
 export const coachingPageQuery = graphql`
@@ -60,4 +48,4 @@ export const coachingPageQuery = graphql`
       }
     }
   }
-`;
+`

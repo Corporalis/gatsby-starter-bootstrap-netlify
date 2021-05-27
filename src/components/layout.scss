@@ -2,7 +2,7 @@
 // Feel free to comment out anything you're not using
 
 // creative theme overrides
-@import "../../scss/creative/variables";
+@import "../scss/creative/variables";
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -41,7 +41,7 @@
 @import "bootstrap/scss/utilities";
 
 // bootswatch theme overrides
-@import "../../scss/creative/creative";
+@import "../scss/creative/creative";
 
 
 // page-level layout
@@ -60,6 +60,6 @@
   flex-direction: row!important;
 
   & > * {
-    padding-left: 10px; 
+    padding-left: 10px;
   }
 }
