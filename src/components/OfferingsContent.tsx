@@ -2,24 +2,52 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Offering from './offering'
+import { graphql, useStaticQuery } from 'gatsby'
+import { GatsbyImageData } from '../models/GatsbyImage'
+import { StaticQuery } from '../models/StaticQuery'
 
-interface OfferingsContentProps {
+interface OfferingsContentFrontmatter {
   title: string
   personalTitle: string
-  personalHtml: string
+  personalBody: string
   groupTitle: string
   groupImage: any
-  groupHtml: string
+  groupBody: string
 }
 
-const OfferingsContent = ({
-  title,
-  personalTitle,
-  personalHtml,
-  groupTitle,
-  groupImage,
-  groupHtml,
-}: OfferingsContentProps) => {
+interface OfferingsContentStaticQuery
+  extends StaticQuery<OfferingsContentFrontmatter> {
+  image: GatsbyImageData
+}
+
+const OfferingsContent = () => {
+  const { markdownRemark, image } = useStaticQuery<OfferingsContentStaticQuery>(
+    graphql`
+      query {
+        markdownRemark(frontmatter: { path: { eq: "/offerings" } }) {
+          html
+          frontmatter {
+            title
+            personalTitle
+            personalBody
+            groupTitle
+            groupBody
+          }
+        }
+        image: file(relativePath: { eq: "headshot 137.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, width: 1000)
+          }
+        }
+      }
+    `
+  )
+
+  const { frontmatter } = markdownRemark
+  console.log(frontmatter)
+  const { title, personalTitle, personalBody, groupTitle, groupBody } =
+    frontmatter
+
   return (
     <section className="page-section">
       <Container>
@@ -35,7 +63,7 @@ const OfferingsContent = ({
             <div
               className="text-left"
               dangerouslySetInnerHTML={{
-                __html: personalHtml,
+                __html: personalBody,
               }}
             ></div>
           </Col>
@@ -61,14 +89,17 @@ const OfferingsContent = ({
       <Container>
         <Row>
           <Col lg="6">
-            <GatsbyImage image={groupImage} alt="Group session image" />
+            <GatsbyImage
+              image={image.childImageSharp.gatsbyImageData}
+              alt="Group session image"
+            />
           </Col>
           <Col lg="6">
             <h3 className="text-center mt-0">{groupTitle}</h3>
             <div
               className="text-left"
               dangerouslySetInnerHTML={{
-                __html: groupHtml,
+                __html: groupBody,
               }}
             ></div>
           </Col>

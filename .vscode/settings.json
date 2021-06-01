@@ -16,5 +16,12 @@
     "statusBar.foreground": "#15202b"
   },
   "peacock.color": "#00b3e6",
-  "cSpell.words": ["addy", "fortawesome"]
+  "cSpell.words": [
+    "Frontmatter",
+    "addy",
+    "fortawesome"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

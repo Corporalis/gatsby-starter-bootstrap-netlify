@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface TextPrimaryContentSectionProps {
   title: string
   html: string
-  image: any
+  image: IGatsbyImageData
   primaryColumnWidth: number
   secondaryColumnWidth: number
 }

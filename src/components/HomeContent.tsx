@@ -1,13 +1,32 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { graphql, useStaticQuery } from 'gatsby'
+import { GatsbyImageData } from '../models/GatsbyImage'
 
-interface HomeContentProps {
-  html: string
-  image: any
+interface HomeContentStaticQuery {
+  markdownRemark: {
+    html: string
+  }
+  image: GatsbyImageData
 }
 
-const HomeContent = ({ html, image }: HomeContentProps): JSX.Element => {
+const HomeContent = (): JSX.Element => {
+  const { markdownRemark, image } = useStaticQuery<HomeContentStaticQuery>(
+    graphql`
+      query {
+        markdownRemark(frontmatter: { path: { eq: "/" } }) {
+          html
+        }
+        image: file(relativePath: { eq: "headshot 57a.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, width: 1000)
+          }
+        }
+      }
+    `
+  )
+
   return (
     <section className="page-section">
       <Container>
@@ -15,11 +34,11 @@ const HomeContent = ({ html, image }: HomeContentProps): JSX.Element => {
           <Col
             lg="9"
             className="text-left"
-            dangerouslySetInnerHTML={{ __html: html }}
+            dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
           />
 
           <Col lg="3">
-            <GatsbyImage image={image} alt="Welcome image" />
+            <GatsbyImage image={image.childImageSharp.gatsbyImageData} alt="Welcome image" />
           </Col>
         </Row>
       </Container>
