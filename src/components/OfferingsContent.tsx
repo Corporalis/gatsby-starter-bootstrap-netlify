@@ -4,19 +4,25 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Offering from './offering'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImageData } from '../models/GatsbyImage'
-import { StaticQuery } from '../models/StaticQuery'
+import { StaticQueryWithFields } from '../models/StaticQuery'
 
 interface OfferingsContentFrontmatter {
   title: string
   personalTitle: string
-  personalBody: string
   groupTitle: string
   groupImage: any
-  groupBody: string
+}
+
+interface OfferingsContentFields {
+  personalBodyHtml: string
+  groupBodyHtml: string
 }
 
 interface OfferingsContentStaticQuery
-  extends StaticQuery<OfferingsContentFrontmatter> {
+  extends StaticQueryWithFields<
+    OfferingsContentFrontmatter,
+    OfferingsContentFields
+  > {
   image: GatsbyImageData
 }
 
@@ -29,9 +35,11 @@ const OfferingsContent = () => {
           frontmatter {
             title
             personalTitle
-            personalBody
             groupTitle
-            groupBody
+          }
+          fields {
+            personalBodyHtml
+            groupBodyHtml
           }
         }
         image: file(relativePath: { eq: "headshot 137.jpg" }) {
@@ -43,10 +51,9 @@ const OfferingsContent = () => {
     `
   )
 
-  const { frontmatter } = markdownRemark
-  console.log(frontmatter)
-  const { title, personalTitle, personalBody, groupTitle, groupBody } =
-    frontmatter
+  const { frontmatter, fields } = markdownRemark
+  const { title, personalTitle, groupTitle } = frontmatter
+  const { personalBodyHtml, groupBodyHtml } = fields
 
   return (
     <section className="page-section">
@@ -63,7 +70,7 @@ const OfferingsContent = () => {
             <div
               className="text-left"
               dangerouslySetInnerHTML={{
-                __html: personalBody,
+                __html: personalBodyHtml,
               }}
             ></div>
           </Col>
@@ -99,7 +106,7 @@ const OfferingsContent = () => {
             <div
               className="text-left"
               dangerouslySetInnerHTML={{
-                __html: groupBody,
+                __html: groupBodyHtml,
               }}
             ></div>
           </Col>
