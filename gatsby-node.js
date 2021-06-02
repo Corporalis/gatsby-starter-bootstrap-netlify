@@ -52,7 +52,6 @@ exports.onCreateNode = ({ node, actions }) => {
 
   for (const property of bodyProperties) {
     const markdown = node.frontmatter[property]
-    console.log(markdown)
     const value = remark().use(remarkHTML).processSync(markdown).toString()
 
     createNodeField({
