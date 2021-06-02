@@ -37,7 +37,7 @@ const HomeContent = (): JSX.Element => {
             dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
           />
 
-          <Col lg="3">
+          <Col lg="3" className="d-none d-lg-block">
             <GatsbyImage image={image.childImageSharp.gatsbyImageData} alt="Welcome image" />
           </Col>
         </Row>
