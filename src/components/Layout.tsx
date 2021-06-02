@@ -19,6 +19,7 @@ library.add(fab, faPhone, faClock, faCalendarDay)
 import 'prismjs/themes/prism-twilight.css'
 
 import './layout.scss'
+import Scrollable from './scroll/Scrollable'
 
 interface SEOStaticQuery {
   site: {
@@ -36,6 +37,13 @@ interface SEOStaticQuery {
 const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [activeClass] = useState<string>('inactive')
+  const [scrolled, setScrolled] = useState(false)
+
+  const handleScroll = () => {
+    var pageContentRect = document.body.getBoundingClientRect()
+    console.log(pageContentRect.top)
+    setScrolled(pageContentRect.top < -40)
+  }
 
   const menuButtonClick = () => {
     setCollapsed(!collapsed)
@@ -65,8 +73,11 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
   return (
     <div className="App">
       <Helmet title={site.siteMetadata.title}></Helmet>
+      <Scrollable onWindowScroll={handleScroll}></Scrollable>
       <nav
-        className="navbar navbar-expand-lg navbar-light fixed-top py-3"
+        className={`navbar navbar-expand-lg navbar-light fixed-top py-3 ${
+          scrolled ? 'navbar-scrolled' : ''
+        }`}
         id="mainNav"
       >
         <Container>
