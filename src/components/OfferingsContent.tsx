@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import Offering from './offering'
 import { graphql, useStaticQuery } from 'gatsby'
+import Offering from './Offering'
 import { GatsbyImageData } from '../models/GatsbyImage'
 import { StaticQueryWithFields } from '../models/StaticQuery'
 
