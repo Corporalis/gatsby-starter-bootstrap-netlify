@@ -41,7 +41,6 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
 
   const handleScroll = () => {
     var pageContentRect = document.body.getBoundingClientRect()
-    console.log(pageContentRect.top)
     setScrolled(pageContentRect.top < -40)
   }
 
