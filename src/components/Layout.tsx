@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container } from 'reactstrap'
 import { Link } from 'react-scroll'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -28,21 +28,23 @@ interface SEOStaticQuery {
   }
   logo: {
     childImageSharp: {
-      gatsbyImageData: any //IGatsbyImageData
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
 
 const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
-  // let user
-  // if (typeof window !== 'undefined') {
-  //   user = window.netlifyIdentity && window.netlifyIdentity.currentUser()
-  // }
+  const [collapsed, setCollapsed] = useState<boolean>(false)
+  const [activeClass] = useState<string>('inactive')
 
-  const menuButtonClick = (event: React.MouseEvent) => {
-    const navBar = document?.getElementById('navbarResponsive')
-    navBar?.classList.toggle('show')
-    event.currentTarget.classList.toggle('collapsed')
+  const menuButtonClick = () => {
+    setCollapsed(!collapsed)
+  }
+
+  const navigationClick = () => {
+    if (collapsed) {
+      menuButtonClick()
+    }
   }
 
   const { site, logo } = useStaticQuery<SEOStaticQuery>(graphql`
@@ -74,7 +76,9 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
           />
 
           <button
-            className="navbar-toggler navbar-toggler-right"
+            className={`navbar-toggler navbar-toggler-right ${
+              collapsed ? 'collapsed' : ''
+            }`}
             type="button"
             data-toggle="collapse"
             data-target="#navbarResponsive"
@@ -85,43 +89,49 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
+          <div
+            className={`collapse navbar-collapse ${collapsed ? 'show' : ''}`}
+            id="navbarResponsive"
+          >
             <ul className="navbar-nav ml-auto my-2 my-lg-0">
               <li className="nav-item">
                 <Link
-                  activeClass="active"
+                  activeClass={activeClass}
                   to="coaching"
                   spy={true}
                   smooth={true}
                   offset={-132}
                   duration={500}
                   className="nav-link"
+                  onClick={navigationClick}
                 >
                   Coaching
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  activeClass="active"
+                  activeClass={activeClass}
                   to="offerings"
                   spy={true}
                   smooth={true}
                   offset={-132}
                   duration={500}
                   className="nav-link"
+                  onClick={navigationClick}
                 >
                   When we meet
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  activeClass="active"
+                  activeClass={activeClass}
                   to="about"
                   spy={true}
                   smooth={true}
                   offset={-132}
                   duration={500}
-                  className="nav-link"
+                  className={`nav-link`}
+                  onClick={navigationClick}
                 >
                   About
                 </Link>
