@@ -5,8 +5,9 @@ import HomeContent from '../components/HomeContent'
 import CoachingContent from '../components/sections/CoachingContent'
 import AboutContent from '../components/AboutContent'
 import OfferingsContent from '../components/OfferingsContent'
+import TestimonialsContent from '../components/TestimonialsContent'
 
-export default function HomePageTemplate() {
+const HomePageTemplate = () => {
   return (
     <Layout>
       <header className="masthead"></header>
@@ -20,6 +21,9 @@ export default function HomePageTemplate() {
       <Element name="about">
         <AboutContent />
       </Element>
+      <TestimonialsContent />
     </Layout>
   )
 }
+
+export default HomePageTemplate

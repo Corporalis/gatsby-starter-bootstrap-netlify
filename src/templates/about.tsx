@@ -2,7 +2,7 @@ import React from 'react'
 import AboutContent from '../components/AboutContent'
 import Layout from '../components/Layout'
 
-export default function AboutPageTemplate() {
+const AboutPageTemplate = () => {
   return (
     <Layout>
       <header className="masthead"></header>
@@ -10,3 +10,5 @@ export default function AboutPageTemplate() {
     </Layout>
   )
 }
+
+export default AboutPageTemplate

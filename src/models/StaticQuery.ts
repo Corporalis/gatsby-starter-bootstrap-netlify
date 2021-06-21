@@ -5,10 +5,22 @@ export interface StaticQuery<TFrontmatter> {
   }
 }
 
-export interface StaticQueryWithFields<TFrontmatter, TFields> extends StaticQuery<TFrontmatter> {
+export interface StaticQueryWithFields<TFrontmatter, TFields>
+  extends StaticQuery<TFrontmatter> {
   markdownRemark: {
     html: string
     frontmatter: TFrontmatter
-    fields:TFields
+    fields: TFields
+  }
+}
+
+export interface StaticQueryAll<TFrontmatter> {
+  allMarkdownRemark: {
+    nodes: [
+      {
+        html: string
+        frontmatter: TFrontmatter
+      }
+    ]
   }
 }

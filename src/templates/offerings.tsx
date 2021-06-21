@@ -1,39 +1,14 @@
 import React from 'react'
-import { Container } from 'reactstrap'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import OfferingsContent from '../components/OfferingsContent'
 
-export default function Template({ data }: any) {
-  const { markdownRemark: post } = data
+const OfferingsTemplate = () => {
   return (
     <Layout>
-      <div>
-        <Helmet
-          title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`}
-        />
-        <Container>
-          <h1 className="display-3">{post.frontmatter.title}</h1>
-        </Container>
-        <Container dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
+      <header className="masthead"></header>
+      <OfferingsContent />
     </Layout>
   )
 }
 
-export const aboutPageQuery = graphql`
-  query OfferingsPage($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        path
-        title
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+export default OfferingsTemplate
