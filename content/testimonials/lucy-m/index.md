@@ -1,10 +1,9 @@
 ---
-person: Lucy M
-business: "Uprising Leadership Programme"
 contentType: testimonial
 path: /testimonials
+person: Lucy M
+business: Uprising Leadership Programme
 ---
-
 Working with Addy these last few months has been brilliant. I always feel incredibly positive after each session.
 She has greatly helped me to be more thoughtful and understanding of what I want to do and how to get there.
 Addy does this by giving me the tools to reach this point myself, through reflection and discussion. These
