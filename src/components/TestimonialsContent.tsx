@@ -18,6 +18,12 @@ interface TestimonialContentStaticQuery
   extends StaticQueryAll<AboutContentFrontmatter> {}
 
 const TestimonialsContent = () => {
+  const formatMetadata = (metaData: AboutContentFrontmatter): string => {
+    const items = [metaData.person, metaData.business]
+    const filteredItems = items.filter((item) => !!item)
+    return filteredItems.join(', ')
+  }
+
   const { allMarkdownRemark } = useStaticQuery<TestimonialContentStaticQuery>(
     graphql`
       query {
@@ -66,7 +72,9 @@ const TestimonialsContent = () => {
                       ></QuoteText>
                       <QuoteMetadataContainer>
                         <Empty />
-                        <QuoteMetadata>{`${testimonial.frontmatter.person}, ${testimonial.frontmatter.business}`}</QuoteMetadata>
+                        <QuoteMetadata>
+                          {formatMetadata(testimonial.frontmatter)}
+                        </QuoteMetadata>
                       </QuoteMetadataContainer>
                     </Quote>
                   </SwiperSlide>
@@ -137,5 +145,10 @@ const SwiperContainer = styled.div`
 
   & .swiper-pagination-bullet-active {
     background: ${({ theme }) => theme.colors.primary.main};
+  }
+
+  & .swiper-slide {
+    display: flex;
+    height: auto;
   }
 `
