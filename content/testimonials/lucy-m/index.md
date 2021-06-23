@@ -1,7 +1,7 @@
 ---
 person: Lucy M
 business: "Uprising Leadership Programme"
-contentType: "testimonial"
+contentType: testimonial
 path: /testimonials
 ---
 
