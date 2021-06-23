@@ -3,7 +3,11 @@ import React from 'react'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 import media from 'styled-media-query'
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { StaticQueryAll } from '../models/StaticQuery'
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 interface AboutContentFrontmatter {
   business: string
@@ -45,19 +49,31 @@ const TestimonialsContent = () => {
           <hr className="divider my-4"></hr>
         </Col>
         <Col lg="12">
-          {testimonials.map((testimonial) => {
-            return (
-              <Quote>
-                <QuoteText
-                  dangerouslySetInnerHTML={{ __html: testimonial.html }}
-                ></QuoteText>
-                <QuoteMetadataContainer>
-                  <Empty />
-                  <QuoteMetadata>{`${testimonial.frontmatter.person}, ${testimonial.frontmatter.business}`}</QuoteMetadata>
-                </QuoteMetadataContainer>
-              </Quote>
-            )
-          })}
+          <SwiperContainer>
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              navigation
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+            >
+              {testimonials.map((testimonial, index) => {
+                return (
+                  <SwiperSlide key={`slide-${index}`}>
+                    <Quote>
+                      <QuoteText
+                        dangerouslySetInnerHTML={{ __html: testimonial.html }}
+                      ></QuoteText>
+                      <QuoteMetadataContainer>
+                        <Empty />
+                        <QuoteMetadata>{`${testimonial.frontmatter.person}, ${testimonial.frontmatter.business}`}</QuoteMetadata>
+                      </QuoteMetadataContainer>
+                    </Quote>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+          </SwiperContainer>
         </Col>
       </Row>
     </Container>
@@ -69,7 +85,7 @@ export default TestimonialsContent
 const Quote = styled(Card)`
   font-size: 0.9rem;
   width: 75%;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
   min-height: 20rem;
   padding: 0 8rem 8rem 8rem;
   border-radius: 10rem;
@@ -107,4 +123,19 @@ const QuoteMetadataContainer = styled.div`
 
 const QuoteMetadata = styled.span`
   font-weight: 700;
+`
+
+const SwiperContainer = styled.div`
+  & .swiper-button-next,
+  .swiper-button-prev {
+    color: ${({ theme }) => theme.colors.primary.main};
+
+    ${media.lessThan('medium')`
+      color: ${({ theme }) => theme.colors.highlight.text};
+    `}
+  }
+
+  & .swiper-pagination-bullet-active {
+    background: ${({ theme }) => theme.colors.primary.main};
+  }
 `

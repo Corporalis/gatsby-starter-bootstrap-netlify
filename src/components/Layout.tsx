@@ -6,7 +6,8 @@ import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+
 import {
   faPhone,
   faClock,
@@ -155,12 +156,16 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
             </div>
           </Container>
         </nav>
-        <div id="page-content" className="pageContent">
+        <PageContent id="page-content" className="pageContent">
           {children}
-        </div>
+        </PageContent>
       </div>
     </ThemeProvider>
   )
 }
 
 export default TemplateWrapper
+
+const PageContent = styled.div`
+  flex: 1;
+`

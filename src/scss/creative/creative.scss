@@ -1,11 +1,17 @@
 // Import custom variables (overrides Bootstrap default variables)
-@import "./variables.scss";
+@import './variables.scss';
 
 // Import Bootstrap
-@import "bootstrap/scss/bootstrap.scss";
+@import 'bootstrap/scss/bootstrap.scss';
 
 // Import custom styles
-@import "./global.scss";
-@import "./navbar.scss";
-@import "./masthead.scss";
-@import "./portfolio.scss";
+@import './global.scss';
+@import './navbar.scss';
+@import './masthead.scss';
+@import './portfolio.scss';
+
+// Import Swiper styles
+@import 'swiper/swiper.scss';
+@import 'swiper/components/navigation/navigation.scss';
+@import 'swiper/components/pagination/pagination.scss';
+@import 'swiper/components/scrollbar/scrollbar.scss';
