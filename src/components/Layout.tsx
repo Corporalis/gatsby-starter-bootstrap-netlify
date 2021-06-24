@@ -24,6 +24,7 @@ import './layout.scss'
 import Scrollable from './scroll/Scrollable'
 import { GlobalStyles } from '../GlobalStyles'
 import { theme } from '../theme'
+import SEO from './SEO'
 
 interface SEOStaticQuery {
   site: {
@@ -77,7 +78,7 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div className="App">
-        <Helmet title={site.siteMetadata.title}></Helmet>
+        <SEO />
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
         <nav
           className={`navbar navbar-expand-lg navbar-light fixed-top py-3 ${
