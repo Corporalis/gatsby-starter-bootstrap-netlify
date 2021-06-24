@@ -63,7 +63,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps): JSX.Element => {
   const metaTitle = site.siteMetadata.title
   const siteTitle = title
 
-  console.log (socialImage.childImageSharp.gatsbyImageData)
   const metaImage = `${site.siteMetadata.siteUrl}${socialImage.childImageSharp.gatsbyImageData.images.fallback?.src}`
 
   return (
