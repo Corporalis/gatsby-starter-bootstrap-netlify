@@ -1,4 +1,6 @@
 ---
+contentType: testimonial
+path: /testimonials
 person: Lucy M
 business: Uprising Leadership Programme
 ---

@@ -4,74 +4,101 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "/static/files/"
-public_folder: "/files/"
+media_folder: '/static/files/'
+public_folder: '/files/'
 
 collections:
-  - name: "about"
-    label: "About"
-    folder: "src/pages/about"
+  - name: 'about'
+    label: 'About'
+    folder: 'src/pages/about'
     create: false
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
       - {
-          label: "Content Type",
-          name: "contentType",
-          widget: "hidden",
-          default: "about",
+          label: 'Content Type',
+          name: 'contentType',
+          widget: 'hidden',
+          default: 'about',
         }
-      - { label: "Path", name: "path", widget: "hidden", default: "/about" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Path', name: 'path', widget: 'hidden', default: '/about' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: "home"
-    label: "Home"
-    folder: "src/pages/home"
+  - name: 'home'
+    label: 'Home'
+    folder: 'src/pages/home'
     create: false
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
       - {
-          label: "Content Type",
-          name: "contentType",
-          widget: "hidden",
-          default: "about",
+          label: 'Content Type',
+          name: 'contentType',
+          widget: 'hidden',
+          default: 'about',
         }
-      - { label: "Path", name: "path", widget: "hidden", default: "/" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Path', name: 'path', widget: 'hidden', default: '/' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: "coaching"
-    label: "Coaching"
-    folder: "src/pages/coaching"
+  - name: 'coaching'
+    label: 'Coaching'
+    folder: 'src/pages/coaching'
     create: false
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
       - {
-          label: "Content Type",
-          name: "contentType",
-          widget: "hidden",
-          default: "coaching",
+          label: 'Content Type',
+          name: 'contentType',
+          widget: 'hidden',
+          default: 'coaching',
         }
-      - { label: "Path", name: "path", widget: "hidden", default: "/coaching" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Path', name: 'path', widget: 'hidden', default: '/coaching' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: "offerings"
-    label: "Offerings"
-    folder: "src/pages/offerings"
+  - name: 'offerings'
+    label: 'Offerings'
+    folder: 'src/pages/offerings'
     create: false
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
       - {
-          label: "Content Type",
-          name: "contentType",
-          widget: "hidden",
-          default: "offerings",
+          label: 'Content Type',
+          name: 'contentType',
+          widget: 'hidden',
+          default: 'offerings',
         }
-      - { label: "Path", name: "path", widget: "hidden", default: "/offerings" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "PersonalTitle", name: "personalTitle", widget: "string" }
-      - { label: "PersonalBody", name: "personalBody", widget: "markdown", required: false }
-      - { label: "GroupTitle", name: "groupTitle", widget: "string" }
-      - { label: "GroupBody", name: "groupBody", widget: "markdown" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Path', name: 'path', widget: 'hidden', default: '/offerings' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'PersonalTitle', name: 'personalTitle', widget: 'string' }
+      - {
+          label: 'PersonalBody',
+          name: 'personalBody',
+          widget: 'markdown',
+          required: false,
+        }
+      - { label: 'GroupTitle', name: 'groupTitle', widget: 'string' }
+      - { label: 'GroupBody', name: 'groupBody', widget: 'markdown' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'testimonials'
+    label: 'Testimonials'
+    folder: 'content/testimonials'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{person}}/index'
+    editor:
+      preview: false
+    fields:
+      - {
+          label: 'Content Type',
+          name: 'contentType',
+          widget: 'hidden',
+          default: 'testimonial',
+        }
+      - { label: 'Path', name: 'path', widget: 'hidden', default: '/testimonials' }
+      - { label: 'Person', name: 'person', widget: 'string' }
+      - { label: 'Business', name: 'business', widget: 'string' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }

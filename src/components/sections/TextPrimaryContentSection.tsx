@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface TextPrimaryContentSectionProps {

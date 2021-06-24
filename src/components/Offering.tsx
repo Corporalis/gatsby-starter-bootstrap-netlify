@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col } from 'reactstrap'
+import { Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
